@@ -1,23 +1,13 @@
-function move(e) {
-	motion(e.pageX, e.pageY, .1)
-}
+const	ua = navigator.userAgent.toLowerCase();
+const	isAndroid = ua.indexOf("android") > -1;
+const	mainEl = document.getElementById("main");
 
-function motion(e, a, n) {
-	o.mouse.x = (e - o.size.x / 2) * n,
-	o.mouse.y = (a - o.size.x / 2) * n,
-	mainEl.style.oTransform = "rotateX(" + .05 * o.mouse.y + "deg) rotateY(" + o.mouse.x * -.05 + "deg) translateZ(0px)",
-	mainEl.style.mozTransform = "rotateX(" + .05 * o.mouse.y + "deg) rotateY(" + o.mouse.x * -.05 + "deg) translateZ(0px)",
-	mainEl.style.webkitTransform = "rotateX(" + .05 * o.mouse.y + "deg) rotateY(" + o.mouse.x * -.05 + "deg) translateZ(0px)",
-	mainEl.style.transform = "rotateX(" + .05 * o.mouse.y + "deg) rotateY(" + o.mouse.x * -.05 + "deg) translateZ(0px)",
-  document.documentElement.style.setProperty('--bgPos', Math.abs(o.mouse.y) + '% ' + Math.abs(o.mouse.x) + '%')
-}
-
-var o = {
+const o = {
 	size: {
 		x: window.innerWidth,
 		y: window.innerHeight
 	},
-	offscreen_fac: 1,
+	offscreen_fac: .1,
 	mouse: {
 		x: 0,
 		y: 0
@@ -26,10 +16,19 @@ var o = {
 		x: .2,
 		y: .2
 	}
-},
-	ua = navigator.userAgent.toLowerCase(),
-	isAndroid = ua.indexOf("android") > -1,
-	mainEl = document.getElementById("main");
+};
+
+function move(e) {
+	motion(e.pageX, e.pageY, .1);
+}
+
+function motion(e, a, n) {
+	o.mouse.x = (e - o.size.x / 2) * n;
+	o.mouse.y = (a - o.size.x / 2) * n;
+
+	mainEl.style.transform = `rotateX(${-o.offscreen_fac * o.mouse.y}deg) rotateY(${o.mouse.x * o.offscreen_fac}deg) translateZ(0px)`;
+  document.documentElement.style.setProperty('--bgPos', Math.abs(o.mouse.y) + '% ' + Math.abs(o.mouse.x) + '%');
+}
 
 // isAndroid ? console.log("isAndroid") : console.log("is not android"),
 // window.DeviceOrientationEvent && console.log("doeSupported"),

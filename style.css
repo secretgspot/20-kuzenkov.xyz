@@ -1,7 +1,6 @@
 * {
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -15,66 +14,49 @@ body {
   background: #eee;
   color: #000;
   font-size: 100%;
-  -webkit-perspective: 500px;
   perspective: 500px;
-  -webkit-perspective-origin: center center;
   perspective-origin: center center;
   font-family: 'Work Sans', sans-serif;
   overflow: hidden;
-  display: -ms-grid;
   display: grid;
   place-items: center;
 }
 
 :root {
   --bgPos: 50% 40%;
+  --borderWidth: 25%;
+  --width: 333px;
+  --height: 333px;
 }
 
 .gradient-border {
-  --borderWidth: 3px;
-  /*background: #1D1F20;*/
   position: relative;
   border-radius: var(--borderWidth);
 }
 .gradient-border:after {
   content: '';
   position: absolute;
-  top: calc(-1 * var(--borderWidth));
-  left: calc(-1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: var(--height);
+  width: var(--width);
+  background: linear-gradient(30deg, #ff00003d, #d800ff3d, #0400ff3d, #00fff33d, #00ff1f3d, #efff003d);
   border-radius: calc(2 * var(--borderWidth));
   z-index: -1;
-  /*animation: animatedgradient 3s ease alternate infinite;*/
   background-position: var(--bgPos);
-  background-size: 300% 300%;
+  background-size: 333% 333%;
 }
-
-
-@keyframes animatedgradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 
 div#main {
   width: 90vw;
   height: 90vh;
-  /*border: 1px solid;*/
   position: relative;
 }
 
 #main-logo {
-  width: 333px;
-  height: 333px;
+  height: var(--height);
+  width: var(--width);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -82,8 +64,6 @@ div#main {
 }
 
 
-.svg_st0{fill:#FFDE17;}
-.svg_st1{fill:#E6E7E8;stroke:#000000;stroke-width:42.5197;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-.svg_st2{fill:none;stroke:#00AEEF;stroke-width:42.5197;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-.svg_st3{fill:none;stroke:#EC008C;stroke-width:42.5197;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-
+.svg_st0{fill:#ffffff3d;}
+.svg_st1{fill:#00AEEF;}
+.svg_st2{fill:#EC008C;}
