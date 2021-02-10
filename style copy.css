@@ -1,0 +1,69 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+body {
+  background: #eee;
+  color: #000;
+  font-size: 100%;
+  perspective: 500px;
+  perspective-origin: center center;
+  font-family: 'Work Sans', sans-serif;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+:root {
+  --bgPos: 50% 40%;
+  --borderWidth: 25%;
+  --width: 333px;
+  --height: 333px;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: var(--height);
+  width: var(--width);
+  background: linear-gradient(30deg, #ff00003d, #d800ff3d, #0400ff3d, #00fff33d, #00ff1f3d, #efff003d);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  background-position: var(--bgPos);
+  background-size: 333% 333%;
+}
+
+div#main {
+  width: 90vw;
+  height: 90vh;
+  position: relative;
+}
+
+#main-logo {
+  height: var(--height);
+  width: var(--width);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+.svg_st0{fill:#ffffff3d;}
+.svg_st1{fill:#00AEEF;}
+.svg_st2{fill:#EC008C;}
