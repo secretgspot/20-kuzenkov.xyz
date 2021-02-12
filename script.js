@@ -1,3 +1,7 @@
+const	ua = navigator.userAgent.toLowerCase();
+const	isAndroid = ua.indexOf("android") > -1;
+const	mainEl = document.getElementById("main");
+
 // let time = 12;
 let time = (new Date).getHours() + '.' + (new Date).getMinutes();
 let sunRise = 4;
@@ -10,6 +14,22 @@ let halo = document.getElementById("halo");
 
 const normalisedSun = (time >= 3 && time <= 20) ? Math.abs(Math.sin((time - 9) / 27 * Math.PI)) : 0;
 const normalisedSky = (time >= 5 && time <= 18) ? Math.sin((time - 5) / 13 * Math.PI) : 0;
+
+const o = {
+  size: {
+    x: window.innerWidth,
+    y: window.innerHeight
+  },
+  offscreen_fac: .3,
+  mouse: {
+    x: 0,
+    y: 0
+  },
+  padding: {
+    x: .2,
+    y: .2
+  }
+};
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
@@ -36,27 +56,6 @@ function set() {
 };
 
 set();
-
-
-const	ua = navigator.userAgent.toLowerCase();
-const	isAndroid = ua.indexOf("android") > -1;
-const	mainEl = document.getElementById("main");
-
-const o = {
-	size: {
-		x: window.innerWidth,
-		y: window.innerHeight
-	},
-	offscreen_fac: .3,
-	mouse: {
-		x: 0,
-		y: 0
-	},
-	padding: {
-		x: .2,
-		y: .2
-	}
-};
 
 function move(e) {
 	motion(e.pageX, e.pageY, .1);
